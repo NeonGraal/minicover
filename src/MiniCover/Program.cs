@@ -90,6 +90,7 @@ namespace MiniCover
             services.AddTransient<BaseCommand, CloverReportCommand>();
             services.AddTransient<BaseCommand, CoverallsReportCommand>();
             services.AddTransient<BaseCommand, CoberturaReportCommand>();
+            services.AddTransient<BaseCommand, YamlReportCommand>();
 
             services.AddTransient<WorkingDirectoryOption>();
             services.AddTransient<ParentDirectoryOption>();
@@ -108,6 +109,7 @@ namespace MiniCover
             services.AddTransient<NCoverOutputOption>();
             services.AddTransient<OpenCoverOutputOption>();
             services.AddTransient<CoberturaOutputOption>();
+            services.AddTransient<YamlOutputOption>();
             services.AddTransient<VerbosityOption>();
 
             services.AddSingleton<Instrumenter>();

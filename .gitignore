@@ -211,6 +211,8 @@ project.lock.json
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
 
+.history
+
 # Approval Test
 *.received.*
 
@@ -219,6 +221,7 @@ artifacts
 coverage-html
 coverage.json
 coverage.xml
+coverage.yaml
 coverage-hits
 opencovercoverage.xml
 clover.xml

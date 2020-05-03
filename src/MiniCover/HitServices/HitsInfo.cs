@@ -48,18 +48,7 @@ namespace MiniCover
 
         public static HitsInfo TryReadFromDirectory(string path)
         {
-            var contexts = new List<HitContext>();
-
-            if (Directory.Exists(path))
-            {
-                foreach (var hitFile in Directory.GetFiles(path, "*.hits"))
-                {
-                    using (var fileStream = File.Open(hitFile, FileMode.Open, FileAccess.Read))
-                    {
-                        contexts.AddRange(HitContext.Deserialize(fileStream));
-                    }
-                }
-            }
+            var contexts = HitContext.TryReadFromDirectory(path);
 
             return new HitsInfo(contexts);
         }

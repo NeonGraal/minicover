@@ -91,6 +91,24 @@ namespace MiniCover.HitServices
             }
         }
 
+        public static IEnumerable<HitContext> TryReadFromDirectory(string path)
+        {
+            var contexts = new List<HitContext>();
+
+            if (Directory.Exists(path))
+            {
+                foreach (var hitFile in Directory.GetFiles(path, "*.hits"))
+                {
+                    using (var fileStream = File.Open(hitFile, FileMode.Open, FileAccess.Read))
+                    {
+                        contexts.AddRange(HitContext.Deserialize(fileStream));
+                    }
+                }
+            }
+
+            return HitContext.MergeDuplicates(contexts);
+        }
+
         public static IEnumerable<HitContext> Deserialize(Stream stream)
         {
             var result = new List<HitContext>();
